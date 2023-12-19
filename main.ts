@@ -8,6 +8,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     cannonball.x = sub.x + 5
     cannonball.setScale(0.5, ScaleAnchor.Middle)
     num_cannonballs = num_cannonballs + 1
+    cannonball.lifespan = 10000
+    cannonball.setFlag(SpriteFlag.AutoDestroy, true)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (cannonball, enemy_fish) {
     x = cannonball.x
