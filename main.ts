@@ -13,7 +13,7 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (cannonball,
     fishp.data.num_hits = fishp.data.num_hits + 1
 if (fishp.data.num_hits > fishp.data.max_num_hits) {
         array_index = fishp.data.di
-        sprites.destroy(fishp)
+sprites.destroy(fishp)
         fish_left_per_level[array_index] = fish_left_per_level[array_index] - 1
     }
 })
@@ -21,13 +21,19 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
     game.setGameOverMessage(false, "fail :(")
     game.gameOver(false)
 })
-let array_index = 0
 let cannonball: Sprite = null
 let sub: Sprite = null
 let fish_left_per_level: number[] = []
-let fishp_index = 0
+let array_index = 0
 let fish: Sprite = null
-fish_left_per_level = [10]
+let fishp_index = 0
+fish_left_per_level = [
+10,
+12,
+14,
+16,
+20
+]
 game.showLongText("Hit the fish with cannonballs and don't let them touch you! Good luck", DialogLayout.Center)
 sub = sprites.create(assets.image`subby`, SpriteKind.Player)
 sub.setPosition(9, 66)
