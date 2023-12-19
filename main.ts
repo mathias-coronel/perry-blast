@@ -14,12 +14,11 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (cannonball,
     y = cannonball.y
     sprites.destroy(cannonball)
     num_game_hits = num_game_hits + 1
-    
     info.setScore(info.score() + fish.data.hit_val)
     enemy_fish.data.num_hits = enemy_fish.data.num_hits + 1
-    if (enemy_fish.data.num_hits > enemy_fish.data.max_num_hits) {
+if (enemy_fish.data.num_hits > enemy_fish.data.max_num_hits) {
         array_index = enemy_fish.data.di
-        sprites.destroy(enemy_fish)
+sprites.destroy(enemy_fish)
         fish_left_per_level[array_index] = fish_left_per_level[array_index] - 1
         createExplosion(x, y)
     }
@@ -30,7 +29,7 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 })
 // Function to create an explosion at a specific position
 function createExplosion (x: number, y: number) {
-    for (let index = 0; index < 20; index++) {
+    for (let index = 0; index < 10; index++) {
         createParticle(x, y)
     }
 }
@@ -44,12 +43,13 @@ function createParticle (x: number, y: number) {
     particle.vy = Math.randomRange(-50, 50)
     // Set a lifespan for the particle and destroy it after a short delay
     // Adjust the lifespan as needed
-    particle.lifespan = 100
+    particle.lifespan = 500
     particle.setFlag(SpriteFlag.AutoDestroy, true)
 }
 let msg = ""
 let accuracy = 0
 let particle: Sprite = null
+let num_game_hits = 0
 let y = 0
 let x = 0
 let num_cannonballs = 0
@@ -57,9 +57,8 @@ let cannonball: Sprite = null
 let fishp_index = 0
 let sub: Sprite = null
 let fish_left_per_level: number[] = []
-let num_game_hits = 0
-let array_index = 0
 let fish: Sprite = null
+let array_index = 0
 info.setScore(0)
 fish_left_per_level = [
 10,
@@ -81,7 +80,6 @@ let max_hits = [
 5,
 6
 ]
-
 // end for testing
 let hit_val = [
 10,
