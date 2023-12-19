@@ -9,19 +9,19 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     cannonball.setScale(0.5, ScaleAnchor.Middle)
     num_cannonballs = num_cannonballs + 1
 })
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (cannonball, fishp) {
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (cannonball, enemy_fish) {
     x = cannonball.x
     y = cannonball.y
     sprites.destroy(cannonball)
-    num_hits = num_hits + 1
-    // Call the createExplosion function when needed
-    createExplosion(x, y)
+    num_game_hits = num_game_hits + 1
+    
     info.setScore(info.score() + fish.data.hit_val)
-    fishp.data.num_hits = fishp.data.num_hits + 1
-if (fishp.data.num_hits >= fishp.data.max_num_hits) {
-        array_index = fishp.data.di
-sprites.destroy(fishp)
+    enemy_fish.data.num_hits = enemy_fish.data.num_hits + 1
+    if (enemy_fish.data.num_hits > enemy_fish.data.max_num_hits) {
+        array_index = enemy_fish.data.di
+        sprites.destroy(enemy_fish)
         fish_left_per_level[array_index] = fish_left_per_level[array_index] - 1
+        createExplosion(x, y)
     }
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
@@ -57,7 +57,7 @@ let cannonball: Sprite = null
 let fishp_index = 0
 let sub: Sprite = null
 let fish_left_per_level: number[] = []
-let num_hits = 0
+let num_game_hits = 0
 let array_index = 0
 let fish: Sprite = null
 info.setScore(0)
@@ -81,21 +81,7 @@ let max_hits = [
 5,
 6
 ]
-// for testing
-// fish_left_per_level = [
-// 1,
-// 1,
-// 1,
-// 1,
-// 1
-// ]
-// max_hits = [
-// 1,
-// 1,
-// 1,
-// 1,
-// 1
-// ]
+
 // end for testing
 let hit_val = [
 10,
@@ -154,9 +140,9 @@ fish.data.hit_val = hit_val[active_fish]
             level_complete[active_fish] = true
             active_fish = active_fish + 1
             if (active_fish == 5) {
-                accuracy = Math.floor(num_hits * 100 / num_cannonballs)
+                accuracy = Math.floor(num_game_hits * 100 / num_cannonballs)
                 msg = "# Shots: " + num_cannonballs + "\n"
-                msg = "" + msg + "# Hits: " + num_hits + "\n"
+                msg = "" + msg + "# Hits: " + num_game_hits + "\n"
                 msg = "" + msg + "Accuracy: " + accuracy + "%"
                 game.showLongText(msg, DialogLayout.Center)
                 msg = "you won! :)"
