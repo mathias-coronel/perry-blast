@@ -382,6 +382,25 @@ f b 3 c c c b c c b c c c 3 b f
 . c b b 3 3 b 3 3 b 3 3 b b c . 
 . . f f f f f f f f f f f f . . 
 `;
+            case "image8":
+            case "shark":return img`
+..................ccfff.............
+.................cddbbf.............
+........fffffffffddbbf..............
+.......fbbbbbbbbbfcbcf..............
+.......fbbc111bffbbccffff...........
+.......fb111111ffbbbbbcccff....ccccc
+........f1cc3311bbcbcbbccccf..cdbbbc
+........fcc131c1bbbcbcbcccccfcddbbc.
+.........f111111bbbcbcbccccccbdbbf..
+.........f1111111bbbbbccccccccbbcf..
+..........f111111bbbbcccccccffbccf..
+...........c1111cbbbcccccbdbc.fbbcf.
+............cc11cbbbfddddddc...fbbf.
+..............cffbdbbfdddcc.....fbbf
+.................fbdbbfcc........fff
+..................fffff.............
+`;
         }
         return null;
     })
@@ -531,6 +550,42 @@ f 3 c c f f f f f f f f c c 3 f
 f b 3 c b b f b b f b b c 3 b f 
 . c b b 3 3 b 3 3 b 3 3 b b c . 
 . . f f f f f f f f f f f f . . 
+`];
+            case "shark":
+            case "anim4":return [img`
+....................ccfff...........
+..........fffffffffcbbbbf...........
+.........fbbbbbbbbbfffbf............
+.........fbb111bffbbbbff............
+.........fb11111ffbbbbbcff..........
+.........f1cccc11bbcbcbcccf.........
+..........fc1c1c1bbbcbcbcccf...ccccc
+............c3331bbbcbcbccccfccddbbc
+...........c333c1bbbbbbbcccccbddbcc.
+...........c331c11bbbbbcccccccbbcc..
+..........cc13c111bbbbccccccffbccf..
+..........c111111cbbbcccccbbc.fccf..
+...........cc1111cbbbfdddddc..fbbcf.
+.............cccffbdbbfdddc....fbbf.
+..................fbdbbfcc......fbbf
+...................fffff.........fff
+`, img`
+..................ccfff.............
+.................cddbbf.............
+........fffffffffddbbf..............
+.......fbbbbbbbbbfcbcf..............
+.......fbbc111bffbbccffff...........
+.......fb111111ffbbbbbcccff....ccccc
+........f1cc3311bbcbcbbccccf..cdbbbc
+........fcc131c1bbbcbcbcccccfcddbbc.
+.........f111111bbbcbcbccccccbdbbf..
+.........f1111111bbbbbccccccccbbcf..
+..........f111111bbbbcccccccffbccf..
+...........c1111cbbbcccccbdbc.fbbcf.
+............cc11cbbbfddddddc...fbbf.
+..............cffbdbbfdddcc.....fbbf
+.................fbdbbfcc........fff
+..................fffff.............
 `];
         }
         return null;
