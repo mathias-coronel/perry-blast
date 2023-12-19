@@ -88,6 +88,37 @@ let hit_val = [
 80,
 100
 ]
+let fish_speed = [
+-20,
+-30,
+-40,
+-50,
+-60
+]
+let game_mode = 1
+if (game_mode == 1) {
+    fish_left_per_level = [
+    5,
+    6,
+    7,
+    8,
+    10
+    ]
+    fish_speed = [
+    -10,
+    -20,
+    -30,
+    -40,
+    -50
+    ]
+    max_hits = [
+    1,
+    2,
+    3,
+    4,
+    5
+    ]
+}
 let level_complete = [
 false,
 false,
@@ -109,13 +140,6 @@ assets.animation`fisho`,
 assets.animation`crab`,
 assets.animation`clam`,
 assets.animation`shark`
-]
-let fish_speed = [
--20,
--30,
--40,
--50,
--60
 ]
 game.onUpdateInterval(1000, function () {
     if (fish_left_per_level[active_fish] > 0) {
