@@ -41,8 +41,6 @@ function createParticle (x: number, y: number) {
     // Set random velocity for the particle
     particle.vx = Math.randomRange(-50, 50)
     particle.vy = Math.randomRange(-50, 50)
-    // Set a lifespan for the particle and destroy it after a short delay
-    // Adjust the lifespan as needed
     particle.lifespan = 500
     particle.setFlag(SpriteFlag.AutoDestroy, true)
 }
@@ -132,6 +130,8 @@ game.onUpdateInterval(1000, function () {
 fish.data.max_num_hits = max_hits[active_fish]
 fish.data.di = active_fish
 fish.data.hit_val = hit_val[active_fish]
+fish.lifespan = 9000
+        fish.setFlag(SpriteFlag.AutoDestroy, true)
     } else {
         if (level_complete[active_fish] == false) {
             game.showLongText("Level " + (active_fish + 1) + " complete!", DialogLayout.Center)
