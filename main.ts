@@ -6,12 +6,16 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     cannonball.setVelocity(50, 0)
     cannonball.y = sub.y - 8
     cannonball.x = sub.x + 5
-    cannonball.setScale(1, ScaleAnchor.Middle)
+    cannonball.setScale(0.5, ScaleAnchor.Middle)
     num_cannonballs = num_cannonballs + 1
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (cannonball, fishp) {
+    x = cannonball.x
+    y = cannonball.y
     sprites.destroy(cannonball)
     num_hits = num_hits + 1
+    // Call the createExplosion function when needed
+    createExplosion(x, y)
     info.setScore(info.score() + fish.data.hit_val)
     fishp.data.num_hits = fishp.data.num_hits + 1
 if (fishp.data.num_hits >= fishp.data.max_num_hits) {
@@ -24,6 +28,30 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
     game.setGameOverMessage(false, "fail :(")
     game.gameOver(false)
 })
+// Function to create an explosion at a specific position
+function createExplosion (x: number, y: number) {
+    for (let index = 0; index < 20; index++) {
+        createParticle(x, y)
+    }
+}
+// Create a function to generate particles for the explosion
+function createParticle (x: number, y: number) {
+    particle = sprites.create(assets.image`red`, SpriteKind.Projectile)
+    // Set the initial position of the particle
+    particle.setPosition(x, y)
+    // Set random velocity for the particle
+    particle.vx = Math.randomRange(-50, 50)
+    particle.vy = Math.randomRange(-50, 50)
+    // Set a lifespan for the particle and destroy it after a short delay
+    // Adjust the lifespan as needed
+    particle.lifespan = 100
+    particle.setFlag(SpriteFlag.AutoDestroy, true)
+}
+let msg = ""
+let accuracy = 0
+let particle: Sprite = null
+let y = 0
+let x = 0
 let num_cannonballs = 0
 let cannonball: Sprite = null
 let fishp_index = 0
@@ -54,20 +82,20 @@ let max_hits = [
 6
 ]
 // for testing
-fish_left_per_level = [
-1,
-1,
-1,
-1,
-1
-]
-max_hits = [
-1,
-1,
-1,
-1,
-1
-]
+// fish_left_per_level = [
+// 1,
+// 1,
+// 1,
+// 1,
+// 1
+// ]
+// max_hits = [
+// 1,
+// 1,
+// 1,
+// 1,
+// 1
+// ]
 // end for testing
 let hit_val = [
 10,
@@ -126,12 +154,11 @@ fish.data.hit_val = hit_val[active_fish]
             level_complete[active_fish] = true
             active_fish = active_fish + 1
             if (active_fish == 5) {
-                let accuracy = Math.floor(num_hits * 100 / num_cannonballs)
-                let msg = "# Shots: " + num_cannonballs + "\n"
-                msg = msg + "# Hits: " + num_hits + "\n"
-                msg = msg + "Accuracy: " + accuracy + "%"
+                accuracy = Math.floor(num_hits * 100 / num_cannonballs)
+                msg = "# Shots: " + num_cannonballs + "\n"
+                msg = "" + msg + "# Hits: " + num_hits + "\n"
+                msg = "" + msg + "Accuracy: " + accuracy + "%"
                 game.showLongText(msg, DialogLayout.Center)
-                
                 msg = "you won! :)"
                 game.setGameOverMessage(true, msg)
                 game.gameOver(true)
