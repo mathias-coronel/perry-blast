@@ -363,6 +363,25 @@ f 4 4 4 4 4 1 4 4 f 4 4 d f 4 f
 .........c455c4c555c45c.
 ..........ccc444ccccccc.
 `;
+            case "image7":
+            case "clam":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . c c c c c c c c . . . . 
+. . c c b b 3 b 3 3 b b c c . . 
+. c 3 3 b 3 3 b 3 3 3 b 3 3 c . 
+c d d b 3 3 b 3 3 b 3 3 b d d c 
+f c c c d d c d d c d d c c c f 
+f b 3 c c c b c c b c c c 3 b f 
+. c b b 3 3 b 3 3 b 3 3 b b c . 
+. . f f f f f f f f f f f f . . 
+`;
         }
         return null;
     })
@@ -476,6 +495,42 @@ f 4 4 4 4 4 1 4 4 f 4 4 d f 4 f
 .c55c555554ccccc3c45c...
 c55c55555545554cccc5c...
 ccccccccccccccccc.ccc...
+`];
+            case "clam":
+            case "anim3":return [img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . c c c c c c c c . . . . 
+. . c c b b 3 b 3 3 b b c c . . 
+. c 3 3 b 3 3 b 3 3 3 b 3 3 c . 
+c d d b 3 3 b 3 3 b 3 3 b d d c 
+f c c c d d c d d c d d c c c f 
+f b 3 c c c b c c b c c c 3 b f 
+. c b b 3 3 b 3 3 b 3 3 b b c . 
+. . f f f f f f f f f f f f . . 
+`, img`
+. . . . . f c c c c f . . . . . 
+. . c c f b b 3 3 b b f c c . . 
+. c b 3 3 b b c c b b 3 3 b c . 
+. f 3 c c c b c c b c c c 3 f . 
+f c b b c c b c c b c c b b c f 
+c 3 c c b c c c c c c b c c 3 c 
+c 3 c c c c c c c c c c c c 3 c 
+. f b b c c c c c c c c b b f . 
+. . f b b c 8 9 9 8 c b b f . . 
+. . c c c f 9 3 1 9 f c c c . . 
+. c 3 f f f 9 3 3 9 f f f 3 c . 
+c 3 f f f f 8 9 9 8 f f f f 3 c 
+f 3 c c f f f f f f f f c c 3 f 
+f b 3 c b b f b b f b b c 3 b f 
+. c b b 3 3 b 3 3 b 3 3 b b c . 
+. . f f f f f f f f f f f f . . 
 `];
         }
         return null;

@@ -25,8 +25,8 @@ let cannonball: Sprite = null
 let fishp_index = 0
 let sub: Sprite = null
 let fish_left_per_level: number[] = []
-let array_index = 0
 let fish: Sprite = null
+let array_index = 0
 fish_left_per_level = [
 10,
 12,
@@ -34,13 +34,21 @@ fish_left_per_level = [
 16,
 20
 ]
+// for testing
+fish_left_per_level = [
+    2,
+    2,
+    2,
+    2,
+    2
+]
 game.showLongText("Hit the fish with cannonballs and don't let them touch you! Good luck", DialogLayout.Center)
 sub = sprites.create(assets.image`subby`, SpriteKind.Player)
 sub.setPosition(9, 66)
 controller.moveSprite(sub, 100, 100)
 sub.setScale(2, ScaleAnchor.Middle)
 sub.setStayInScreen(true)
-let max_hits = [2, 2, 3]
+let max_hits = [2, 3, 4, 5, 6]
 let level_complete = [
 false,
 false,
@@ -49,9 +57,15 @@ false,
 false
 ]
 let active_fish = fishp_index
-let asset_imgs = [assets.image`fish1`, assets.image`fisho`, assets.image`crab`]
-let asset_anims = [assets.animation`fishp`, assets.animation`fisho`, assets.animation`crab`]
-let fish_speed = [-20, -30, -40, -50, -60]
+let asset_imgs = [assets.image`fish1`, assets.image`fisho`, assets.image`crab`, assets.image`clam`]
+let asset_anims = [assets.animation`fishp`, assets.animation`fisho`, assets.animation`crab`, assets.animation`clam`]
+let fish_speed = [
+-20,
+-30,
+-40,
+-50,
+-60
+]
 game.onUpdateInterval(1000, function () {
     if (fish_left_per_level[active_fish] > 0) {
         fish = sprites.create(asset_imgs[active_fish], SpriteKind.Enemy)
@@ -71,6 +85,10 @@ fish.data.di = active_fish
             game.showLongText("Level " + (active_fish + 1) + " complete!", DialogLayout.Center)
             level_complete[active_fish] = true
             active_fish = active_fish + 1
+            if (active_fish == 5) {
+                game.setGameOverMessage(true, "you won! :)")
+                game.gameOver(true)
+            }
         }
     }
 })
