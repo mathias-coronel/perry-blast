@@ -24,9 +24,9 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 let cannonball: Sprite = null
 let sub: Sprite = null
 let fish_left_per_level: number[] = []
-let array_index = 0
-let fish: Sprite = null
 let fishp_index = 0
+let fish: Sprite = null
+let array_index = 0
 fish_left_per_level = [
 10,
 12,
@@ -48,12 +48,15 @@ false,
 false,
 false
 ]
+let active_fish = fishp_index
+let asset_imgs = [assets.image`fish1`, assets.image`fisho`]
+let asset_anims = [assets.animation`fishp`, assets.animation`fisho`]
 game.onUpdateInterval(1000, function () {
-    if (fish_left_per_level[fishp_index] > 0) {
-        fish = sprites.create(assets.image`fish1`, SpriteKind.Enemy)
+    if (fish_left_per_level[active_fish] > 0) {
+        fish = sprites.create(asset_imgs[active_fish], SpriteKind.Enemy)
         animation.runImageAnimation(
         fish,
-        assets.animation`fishp`,
+        asset_anims[active_fish],
         500,
         true
         )
@@ -63,9 +66,10 @@ game.onUpdateInterval(1000, function () {
 fish.data.max_num_hits = max_hits_fishp
 fish.data.di = fishp_index
     } else {
-        if (level_complete[fishp_index] == false) {
-            game.showLongText("Level 1 complete!", DialogLayout.Center)
-            level_complete[fishp_index] = true
+        if (level_complete[active_fish] == false) {
+            game.showLongText("Level " + (active_fish + 1) + " complete!", DialogLayout.Center)
+            level_complete[active_fish] = true
+            active_fish = active_fish + 1
         }
     }
 })
