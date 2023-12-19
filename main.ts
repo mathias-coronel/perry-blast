@@ -12,10 +12,9 @@ sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (cannonball,
     sprites.destroy(cannonball)
     fishp.data.num_hits = fishp.data.num_hits + 1
 if (fishp.data.num_hits > fishp.data.max_num_hits) {
+        array_index = fishp.data.di
         sprites.destroy(fishp)
-        array_index = parseInt(fishp.data.di)
         fish_left_per_level[array_index] = fish_left_per_level[array_index] - 1
-        game.showLongText(fish_left_per_level[array_index], DialogLayout.Center)
     }
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
