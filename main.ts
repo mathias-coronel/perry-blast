@@ -146,6 +146,7 @@ fish.data.hit_val = hit_val[active_fish]
                 msg = "you won! :)"
                 game.setGameOverMessage(true, msg)
                 game.gameOver(true)
+                game.setGameOverEffect(true, effects.confetti)
             }
         }
     }
